@@ -1,0 +1,44 @@
+{
+  "name": "dn-dev-availability-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "mocha --config ./test/.mocharc.js",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docnetwork/dn-dev-availability-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/docnetwork/dn-dev-availability-service/issues"
+  },
+  "homepage": "https://github.com/docnetwork/dn-dev-availability-service#readme",
+  "lint-staged": {
+    "*.js": "./node_modules/.bin/eslint"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^8.43.0",
+    "eslint-config-dn-base": "^2022.407.1147",
+    "husky": "^8.0.3",
+    "lint-staged": "^12.5.0",
+    "mocha": "^9.2.2",
+    "nodemon": "^2.0.22",
+    "sinon": "^13.0.2",
+    "sinon-chai": "^3.7.0"
+  },
+  "dependencies": {
+    "dn-logging": "^2023.321.2006"
+  }
+}

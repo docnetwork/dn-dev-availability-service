@@ -1,3 +1,8 @@
+test/
+Jenkinsfile
+.eslintrc.json
+
+# From .gitignore
 # Logs
 logs
 *.log

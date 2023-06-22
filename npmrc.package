@@ -1,0 +1,3 @@
+registry=https://dn-878788551012.d.codeartifact.us-east-1.amazonaws.com/npm/dn-npm-private/
+//dn-878788551012.d.codeartifact.us-east-1.amazonaws.com/npm/dn-npm-private/:_authToken=${CODEARTIFACT_AUTH_TOKEN}
+
