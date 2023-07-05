@@ -1,6 +1,6 @@
 FROM node:18.6-slim
 
-LABEL maintainer="DocNetwork <webteam@docnetwork.org>"
+LABEL org.opencontainers.image.authors="webteam@docnetwork.org"
 
 ARG codeArtifactToken
 
