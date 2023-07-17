@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "53d9f1c6-0642-4e77-a0d8-6425a1011b45",
+		"name": "DocNetwork DN-Dev-Availability-Service",
+		"description": "This collection contains all the API used in the dn-dev-availability-service from Github, Google and Jira.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23768194"
+	},
+	"item": [
+		{
+			"name": "Github",
+			"item": [
+				{
+					"name": "List All Repos",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Github_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Github-Api-Version",
+								"value": "2022-11-28",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.github+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.github.com/orgs/docnetwork/repos",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"orgs",
+								"docnetwork",
+								"repos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Repo Pull Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Github_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.github+json",
+								"type": "text"
+							},
+							{
+								"key": "X-GitHub-Api-Version",
+								"value": "2022-11-28",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.github.com/repos/docnetwork/{{Github_Repo}}/pulls",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"docnetwork",
+								"{{Github_Repo}}",
+								"pulls"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Collection of API routes used from Github"
+		},
+		{
+			"name": "Google Calender",
+			"item": [],
+			"description": "Collection of Google Calender API used for this project"
+		},
+		{
+			"name": "Jira",
+			"item": [],
+			"description": "Collection of Jira API routes used for this project"
+		}
+	],
+	"variable": [
+		{
+			"key": "Github_Token",
+			"value": "{{Token_Is_Secret}}"
+		},
+		{
+			"key": "Github_Repo",
+			"value": "dn-dev-availability-service"
+		}
+	]
+}
