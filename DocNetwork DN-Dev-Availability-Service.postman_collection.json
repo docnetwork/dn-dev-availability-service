@@ -112,8 +112,241 @@
 		},
 		{
 			"name": "Jira",
-			"item": [],
+			"item": [
+				{
+					"name": "Get Project issues Type",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{jira_email}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{jira_api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "user",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://docnetwork.atlassian.net/rest/api/3/issuetype/project?projectId=10008",
+							"protocol": "https",
+							"host": [
+								"docnetwork",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"3",
+								"issuetype",
+								"project"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "10008"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Projects",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{jira_email}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{jira_api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "user",
+								"value": "{{jira_email}}:{{jira_api_key}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://docnetwork.atlassian.net/rest/api/3/project",
+							"protocol": "https",
+							"host": [
+								"docnetwork",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"3",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Issues",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{jira_email}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{jira_api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://docnetwork.atlassian.net/rest/api/2/search?jql=project=AP&maxResults=1&issueId=AP-5025",
+							"protocol": "https",
+							"host": [
+								"docnetwork",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"search"
+							],
+							"query": [
+								{
+									"key": "jql",
+									"value": "project=AP"
+								},
+								{
+									"key": "maxResults",
+									"value": "1"
+								},
+								{
+									"key": "issueId",
+									"value": "AP-5025"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search For Isses for AP Project",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{jira_email}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{jira_api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"fields\": [\n      \"summary\",\n      \"status\",\n      \"assignee\",\n      \"reporter\",\n      \"labels\",\n      \"creator\",\n      \"created\",\n      \"issuetype\",\n      \"priority\",\n      \"updated\",\n      \"customfield_10000\"\n    ],\n    \"jql\": \"project = AP AND assignee != null AND status != Closed AND status != To-do\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://docnetwork.atlassian.net/rest/api/2/search",
+							"protocol": "https",
+							"host": [
+								"docnetwork",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"description": "Collection of Jira API routes used for this project"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [
@@ -124,6 +357,15 @@
 		{
 			"key": "Github_Repo",
 			"value": "dn-dev-availability-service"
+		},
+		{
+			"key": "jira_email",
+			"value": "{{Token_Is_Secret}}"
+		},
+		{
+			"key": "jira_api_key",
+			"value": "{{Token_Is_Secret}}",
+			"type": "string"
 		}
 	]
 }
