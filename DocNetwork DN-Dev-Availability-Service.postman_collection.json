@@ -146,7 +146,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://{{jira_org_domain}}/rest/api/3/issuetype/project?projectId=10008",
+							"raw": "https://{{jira_org_domain}}/rest/api/3/issuetype/project?projectId={{jira_project_id}}",
 							"protocol": "https",
 							"host": [
 								"{{jira_org_domain}}"
@@ -161,7 +161,7 @@
 							"query": [
 								{
 									"key": "projectId",
-									"value": "10008"
+									"value": "{{jira_project_id}}"
 								}
 							]
 						}
@@ -237,7 +237,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{jira_org_domain}}/rest/api/2/search?jql=project=AP&maxResults=1&issueId=AP-5025",
+							"raw": "https://{{jira_org_domain}}/rest/api/2/search?jql=project={{jira_project_name}}&maxResults=1&issueId=AP-5025",
 							"protocol": "https",
 							"host": [
 								"{{jira_org_domain}}"
@@ -251,7 +251,7 @@
 							"query": [
 								{
 									"key": "jql",
-									"value": "project=AP"
+									"value": "project={{jira_project_name}}"
 								},
 								{
 									"key": "maxResults",
@@ -366,6 +366,14 @@
 		{
 			"key": "jira_org_domain",
 			"value": "docnetwork.atlassian.net"
+		},
+		{
+			"key": "jira_project_id",
+			"value": "10008"
+		},
+		{
+			"key": "jira_project_name",
+			"value": "AP"
 		}
 	]
 }
