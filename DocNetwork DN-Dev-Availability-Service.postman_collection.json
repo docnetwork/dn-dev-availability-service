@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "53d9f1c6-0642-4e77-a0d8-6425a1011b45",
+		"_postman_id": "e01f7c89-4de2-49d3-bb79-5943c29eaae1",
 		"name": "DocNetwork DN-Dev-Availability-Service",
 		"description": "This collection contains all the API used in the dn-dev-availability-service from Github, Google and Jira.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -42,7 +42,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.github.com/orgs/docnetwork/repos",
+							"raw": "https://api.github.com/orgs/{{Github_org}}/repos",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -51,7 +51,7 @@
 							],
 							"path": [
 								"orgs",
-								"docnetwork",
+								"{{Github_org}}",
 								"repos"
 							]
 						}
@@ -85,7 +85,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.github.com/repos/docnetwork/{{Github_Repo}}/pulls",
+							"raw": "https://api.github.com/repos/{{Github_org}}/{{Github_Repo}}/pulls",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -94,7 +94,7 @@
 							],
 							"path": [
 								"repos",
-								"docnetwork",
+								"{{Github_org}}",
 								"{{Github_Repo}}",
 								"pulls"
 							]
@@ -146,12 +146,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://docnetwork.atlassian.net/rest/api/3/issuetype/project?projectId=10008",
+							"raw": "https://{{jira_org_domain}}/rest/api/3/issuetype/project?projectId=10008",
 							"protocol": "https",
 							"host": [
-								"docnetwork",
-								"atlassian",
-								"net"
+								"{{jira_org_domain}}"
 							],
 							"path": [
 								"rest",
@@ -203,12 +201,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://docnetwork.atlassian.net/rest/api/3/project",
+							"raw": "https://{{jira_org_domain}}/rest/api/3/project",
 							"protocol": "https",
 							"host": [
-								"docnetwork",
-								"atlassian",
-								"net"
+								"{{jira_org_domain}}"
 							],
 							"path": [
 								"rest",
@@ -241,12 +237,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://docnetwork.atlassian.net/rest/api/2/search?jql=project=AP&maxResults=1&issueId=AP-5025",
+							"raw": "https://{{jira_org_domain}}/rest/api/2/search?jql=project=AP&maxResults=1&issueId=AP-5025",
 							"protocol": "https",
 							"host": [
-								"docnetwork",
-								"atlassian",
-								"net"
+								"{{jira_org_domain}}"
 							],
 							"path": [
 								"rest",
@@ -308,12 +302,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://docnetwork.atlassian.net/rest/api/2/search",
+							"raw": "https://{{jira_org_domain}}/rest/api/2/search",
 							"protocol": "https",
 							"host": [
-								"docnetwork",
-								"atlassian",
-								"net"
+								"{{jira_org_domain}}"
 							],
 							"path": [
 								"rest",
@@ -366,6 +358,14 @@
 			"key": "jira_api_key",
 			"value": "{{Token_Is_Secret}}",
 			"type": "string"
+		},
+		{
+			"key": "Github_org",
+			"value": "docnetwork"
+		},
+		{
+			"key": "jira_org_domain",
+			"value": "docnetwork.atlassian.net"
 		}
 	]
 }
