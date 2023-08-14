@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e01f7c89-4de2-49d3-bb79-5943c29eaae1",
+		"_postman_id": "a2f45621-dd9a-4f4d-b044-3654b3ba4cc2",
 		"name": "DocNetwork DN-Dev-Availability-Service",
 		"description": "This collection contains all the API used in the dn-dev-availability-service from Github, Google and Jira.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -237,7 +237,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{jira_org_domain}}/rest/api/2/search?jql=project={{jira_project_name}}&maxResults=1&issueId=AP-5025",
+							"raw": "https://{{jira_org_domain}}/rest/api/2/search?jql=project={{jira_project_name}}&maxResults=1&issueId={{jira_issue_id}}",
 							"protocol": "https",
 							"host": [
 								"{{jira_org_domain}}"
@@ -259,7 +259,7 @@
 								},
 								{
 									"key": "issueId",
-									"value": "AP-5025"
+									"value": "{{jira_issue_id}}"
 								}
 							]
 						}
@@ -294,7 +294,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \n    \"fields\": [\n      \"summary\",\n      \"status\",\n      \"assignee\",\n      \"reporter\",\n      \"labels\",\n      \"creator\",\n      \"created\",\n      \"issuetype\",\n      \"priority\",\n      \"updated\",\n      \"customfield_10000\"\n    ],\n    \"jql\": \"project = AP AND assignee != null AND status != Closed AND status != To-do\"\n}",
+							"raw": "{ \n    \"fields\": [\n      \"summary\",\n      \"status\",\n      \"assignee\",\n      \"reporter\",\n      \"labels\",\n      \"creator\",\n      \"created\",\n      \"issuetype\",\n      \"priority\",\n      \"updated\",\n      \"customfield_10000\"\n    ],\n    \"jql\": \"project = {{jira_project_name}} AND assignee != null AND status != Closed AND status != To-do\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -374,6 +374,10 @@
 		{
 			"key": "jira_project_name",
 			"value": "AP"
+		},
+		{
+			"key": "jira_issue_id",
+			"value": "AP-5025"
 		}
 	]
 }
