@@ -42,6 +42,16 @@ export const workload = async ( { req, res } : RouteProps ) => {
                         let orgUser = Object.values( OrganizationLinks ).find( orgLink => orgLink.github === rev.name );
     
                         if ( orgUser ) {
+
+                            if ( !people[ orgUser.name ] ) {
+                                people[ orgUser.name ] = {
+                                    email: orgUser.email,
+                                    github: orgUser.github,
+                                    tickets: { count: 0, data: [] },
+                                    reviewing: { count: 0, data: [] }
+                                }
+                            }
+
                             people[ orgUser.name ].reviewing.count += 1;
     
                             people[ orgUser.name ].reviewing.data.push({
