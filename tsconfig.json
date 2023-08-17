@@ -6,7 +6,6 @@
     "lib": [
       "ES2021",
       "esnext.asynciterable",
-      "DOM"
     ],
     "esModuleInterop": true,
     "experimentalDecorators": true,

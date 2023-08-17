@@ -1,15 +1,14 @@
 'use strict';
-require('dotenv').config()
 
 import express from 'express';
-import { health, workload } from './routes';
+import { HealthRoute } from './types';
 
 const app = express();
 
 // Define routes
-app.get('/health', (req, res) => health({ req, res }) );
-
-app.get('/workload', (req, res) => workload({ req, res }) );
+app.get('/health', (req, res) => {
+  res.json( { message: 'OK' } as HealthRoute );
+});
 
 // Start the server
 app.listen(3010, () => {
